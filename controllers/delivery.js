@@ -5,7 +5,7 @@ const pool  = mysql.createPool({
   host            : 'localhost',
   user            : 'recycling',
   password        : 'password',
-  database        : 'recycling-project'
+  database        : 'recycling-project-nochain'
 });
 
 //add a new delivery from a center

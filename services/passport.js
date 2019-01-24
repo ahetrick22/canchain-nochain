@@ -10,7 +10,7 @@ const pool  = mysql.createPool({
   host            : 'localhost',
   user            : 'recycling',
   password        : 'password',
-  database        : 'recycling-project'
+  database        : 'recycling-project-nochain'
 });
 
 const validPassword = (password, salt, userHash) => {

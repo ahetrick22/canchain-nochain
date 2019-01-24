@@ -1,17 +1,7 @@
 import React from 'react';
-const moment = require('moment');
-
 
 const PlantVerifyModal = props => {
-  const {centerAddress,
-    plantAddress,
-    centerCount,
-    plantCount,
-    centerDt,
-    plantDt,
-    centerBn,
-    plantBn,
-    chainDiscrepancy,
+  const {
     dbDiscrepancy
   } = props;
 
@@ -19,37 +9,37 @@ const PlantVerifyModal = props => {
     <>
       {dbDiscrepancy === 0 ? <><div className="green-circle"></div><span>  No discrepancy in database.</span><br/></> : 
        <><div className="red-circle"></div><span>  Discrepancy identified in database.</span><br /></>}
-       {chainDiscrepancy-dbDiscrepancy === 0 ? <><div className="green-circle"></div><span>  Chain record matches database: any discrepancy is due to human error.</span><br/></> : 
-            <><div className="red-circle"></div><span>  Chain record does not match database: database is untrustworthy.</span><br /></>}
+       <><div className="green-circle"></div><span>  This shows if the chain discrepancy matches the database discrepancy.</span><br/></> 
+            
             <label>Center Address: </label>
-            {centerAddress}
+            0x0000...comes from Metamask
             <br/>
             <label>Plant Address: </label>
-            {plantAddress}
+            0x0000...comes from Metamask
             <br/>
             <label>Center Count: </label>
-            {centerCount}
+            Would be count from blockchain
             <br/>
             <label>Plant Count: </label>
-            {plantCount}
+            Would be count from blockchain
             <br/>
             <label>Center Date/Time: </label>
-            {moment.unix(centerDt).format('MMMM Do YYYY hh:MM a')}
+            Shows the date/time of center's transaction.
             <br/>
             <label>Plant Date/Time: </label>
-            {moment.unix(plantDt).format('MMMM Do YYYY hh:MM a')}
+            Shows the date/time of plant's transaction.
             <br/>
             <label>Center Block Number: </label>
-            {centerBn}
+            Would be block number which mined the center's verification
             <br/>
             <label>Plant Block Number: </label>
-            {plantBn}
+            Would be block number which mined the plant's verification
             <br/>
             <label>Database Discrepancy: </label>
             {dbDiscrepancy}
             <br/>
             <label>Chain Discrepancy: </label>
-            {chainDiscrepancy}
+            Would show the discrepancy on chain
             <br/>
       </>
     );

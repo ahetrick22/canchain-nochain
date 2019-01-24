@@ -1,19 +1,13 @@
 import React from 'react';
-const moment = require('moment');
 
-const CenterVerifyModal= props => {
-  const {centerAddress,
-    centerDt,
-    centerBn,
-  } = props;
-
+const CenterVerifyModal = props => {
   return (
     <>
             <label>Center Address: </label>
-            {centerAddress}
+            0x0000...comes from Metamask
             <br/>
             <label>Plant Address: </label>
-            N/A
+            0x0000...comes from Metamask
             <br/>
             <label>Center Count: </label>
             Verify delivery to view
@@ -22,13 +16,13 @@ const CenterVerifyModal= props => {
             N/A
             <br/>
             <label>Center Date/Time: </label>
-            {moment.unix(centerDt).format('MMMM Do YYYY hh:MM a')}
+            Shows the date/time of center's transaction.
             <br/>
             <label>Plant Date/Time: </label>
             N/A
             <br/>
             <label>Center Block Number: </label>
-            {centerBn}
+            Would be block number which mined the center's verification
             <br/>
             <label>Plant Block Number: </label>
             N/A

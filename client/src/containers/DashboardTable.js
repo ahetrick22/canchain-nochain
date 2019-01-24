@@ -10,7 +10,6 @@ const moment = require('moment');
 
 class DashboardTable extends Component {
 
-
   render () {
     return (
       <>
@@ -20,14 +19,13 @@ class DashboardTable extends Component {
           {tableHead(this.props.user.account_type)}
         </thead>
         <tbody>
-        {fullTableBody(this.props.deliveries, this.props.viewChainRecord, this.props.user.account_type, this.props.verifyDeliveryContract)}
+        {fullTableBody(this.props.deliveries, this.props.user.account_type, this.props.verifyDeliveryContract)}
         </tbody>
       </table>
     }
     </>
         )
   }
-
 } 
 
   const NotVerified = () => {
@@ -42,7 +40,7 @@ class DashboardTable extends Component {
     return (<span className="red-circle"></span>)
   }
 
-  const TableRow = ({ delivery, viewChainRecord, account_type, verifyDeliveryContract }) => {
+  const TableRow = ({ delivery, account_type, verifyDeliveryContract }) => {
     const {delivery_id, center_count, date_time, discrepancy, plant_count, verified, contract_id, name } = delivery;
     if (account_type === "Center") {
       return (
@@ -53,13 +51,13 @@ class DashboardTable extends Component {
           <td className = "align-middle count">{center_count}</td>
           <td className = "align-middle count">{verified ? plant_count : '-'}</td>
           <td className = "align-middle count">{verified ? discrepancy : '-'}</td>
-          <td className = "align-middle"><ChainRecordModal className="modal-lg modal-dialog modal-dialog-centered" dbDiscrepancy={discrepancy} deliveryId={delivery_id} contract_id={contract_id} viewChainRecord={viewChainRecord}/></td>
+          <td className = "align-middle"><ChainRecordModal account_type={account_type} className="modal-lg modal-dialog modal-dialog-centered" dbDiscrepancy={discrepancy} deliveryId={delivery_id} name={name} contract_id={contract_id} verified={verified}/></td>
         </tr>
       )
     } else {
       return (
         <tr key ={delivery_id}>
-          <td className = "align-middle">{!verified ? <FullModal id={delivery_id} account_type={account_type} onClickFunc={verifyDeliveryContract} contract_id={contract_id}buttonLabel="Verify Delivery"/>          
+          <td className = "align-middle">{!verified ? <FullModal id={delivery_id} account_type={account_type} onClickFunc={verifyDeliveryContract} contract_id={contract_id} buttonLabel="Verify Delivery"/>          
                                                       : discrepancy ? <VerifiedDiscrepancy /> : <VerifiedNoDiscrepancy /> }</td>
           <td className="align-middle">{delivery_id}</td>
           <td className = "align-middle">{name}</td>
@@ -67,15 +65,15 @@ class DashboardTable extends Component {
           <td className = "align-middle count">{verified ? center_count : '-'}</td>
           <td className = "align-middle count">{verified ? plant_count : '-'}</td>
           <td className = "align-middle count">{verified ? discrepancy : '-'}</td>
-          <td className = "align-middle"><ChainRecordModal className="modal-lg modal-dialog modal-dialog-centered" dbDiscrepancy={discrepancy} deliveryId={delivery_id} contract_id={contract_id} name={name} viewChainRecord={viewChainRecord} /></td>
+          <td className = "align-middle"><ChainRecordModal account_type={account_type} className="modal-lg modal-dialog modal-dialog-centered" dbDiscrepancy={discrepancy} deliveryId={delivery_id} contract_id={contract_id} name={name} verified={verified}/></td>
         </tr>
       )
     }
     
   }
 
-  const fullTableBody = (deliveries, viewChainRecord, account_type, verifyDeliveryContract) => deliveries.map((delivery, index) => {
-    return (<TableRow key={index} delivery={delivery} viewChainRecord={viewChainRecord} account_type={account_type} verifyDeliveryContract={verifyDeliveryContract}/>) 
+  const fullTableBody = (deliveries, account_type, verifyDeliveryContract) => deliveries.map((delivery, index) => {
+    return (<TableRow key={index} delivery={delivery} account_type={account_type} verifyDeliveryContract={verifyDeliveryContract}/>) 
   })
 
   const tableHead = (account_type) => {

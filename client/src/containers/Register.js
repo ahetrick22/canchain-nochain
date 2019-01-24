@@ -6,10 +6,9 @@ import { Button } from 'reactstrap';
 
 class Register extends Component {
 
-  constructor(props, context) {
+  constructor(props) {
 
     super(props);
-    this.contracts = context.drizzle.contracts;
 
     this.state = {
       centerName: '',
@@ -19,7 +18,7 @@ class Register extends Component {
       username: '',
       password: '',
       verifyPassword: '',
-      accountAddress: this.contracts.BagCount.currentProvider.selectedAddress,
+      accountAddress: '0x0000(from Metamask)',
       accountType: '',
       passwordMismatch: false
     }
@@ -154,11 +153,6 @@ class Register extends Component {
         )  
   }
 }
-
-Register.contextTypes = {
-  drizzle: PropTypes.object
-}
-
 
 export default connect(null, actions)(Register);
 
