@@ -39,6 +39,8 @@ exports.signup = async (req, res, next) => {
     return res.status(422).send({ error: 'You must provide username and password'})
   }
 
+  pool.getConnection(async function(err, connection) {
+
   // See if a user with the given email exists
   await pool.query(`SELECT * FROM users WHERE \`username\`='${username}'`, function(err, existingUser) {
     if (err) { return next(err) }
@@ -48,6 +50,10 @@ exports.signup = async (req, res, next) => {
       return res.status(422).send({ error: 'Username is in use' })
     }
   })
+  await connection.release();
+  })
+
+  pool.getConnection(async function(err, connection) {
 
     // If a user with username does NOT exist, create and save user record
     await pool.query(`INSERT INTO users(
@@ -63,6 +69,8 @@ exports.signup = async (req, res, next) => {
         })
       })
     })
+    await connection.release();
+  })
 
     
 
