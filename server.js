@@ -25,7 +25,7 @@ app.use(function(req, res, next){
   console.log('request', req);
   if(req.header('x-forwarded-proto') !== 'https'){
     console.log('redirecting', req);
-    res.redirect('https://whispering-anchorage-65843.herokuapp.com' + req.url);
+    res.redirect('https://canchain.herokuapp.com' + req.url);
   }else{
     next();
   }
