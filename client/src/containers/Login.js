@@ -37,9 +37,9 @@ class Login extends Component {
           <div className="main-class">
             <div className ="container">
             <div className = "row">
-            <div className = "col-2">
+            <div className = "col-1">
             </div>
-            <div className="col-8 card login-card">
+            <div className="col-10 card login-card">
             <h1>CanChain</h1>
             <h4>A distributed ledger system for secure, verifiable data</h4>
             <div>
@@ -56,7 +56,7 @@ class Login extends Component {
              <br />
              <p className="new-user"><strong>New User? <Link to='/register' className="register"> Register now!</Link></strong></p>
             </div>
-            <div className = "col-2">
+            <div className = "col-1">
             </div>
             </div>
             </div>
