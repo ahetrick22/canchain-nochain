@@ -84,9 +84,7 @@ class PlantDashboardHeader extends Component {
           <DropdownItem onClick={() => this.updateDeliveryView(`?discrepancy=true`)}>Deliveries with Discrepancy</DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
-     
-     <button className="btn btn-primary pull-left" onClick={() => this.props.getDeliveries(this.props.paramStr)}>Get Latest Mined Transactions</button>
-    </>
+         </>
     )
   }
 }

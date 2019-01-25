@@ -24,8 +24,8 @@ const HomePage2 = ({ increasePageNum, decreasePageNum }) => {
               </ul>
             <p>
               </p>        
-              <button className = "btn btn-sm btn-secondary" onClick={decreasePageNum}>Wait, take me back</button>
               <button className = "btn btn-lg btn-primary" onClick={increasePageNum}>How about some transparency?</button>
+              <button className = "btn btn-sm btn-secondary" onClick={decreasePageNum}>Wait, take me back</button>
          </div>
        </div>
       </div>

@@ -49,7 +49,7 @@ export const signout = () => {
   }
 }
 
-export const createDelivery = deliveryInfo => dispatch => {
+export const createDelivery = (deliveryInfo, userId) => dispatch => {
   //the center that is creating the delivery
   //send the delivery to the SQL DB
   fetch('/delivery', {
@@ -61,8 +61,8 @@ export const createDelivery = deliveryInfo => dispatch => {
   },
   body: JSON.stringify(deliveryInfo)     
   }).then(res => res.json())
-    .then(data => {
-      dispatch({type: FETCHING_DATA});
+    .then(async (data) => {
+      await data;
       }).catch(error => {
         console.error(error);
   })
@@ -79,8 +79,7 @@ export const verifyDelivery = deliveryInfo => dispatch => {
   body: JSON.stringify(deliveryInfo) 
   }).then(res => res.json())
     .then(async (data) => {
-      await getDeliveries('');
-      await dispatch({type: FETCHING_DATA});
+      await data;
   }).catch(error => {
     console.error(error);
   })

@@ -59,7 +59,6 @@ label {
   box-shadow: 2px 4px 6px 8px $gray;
 
   button {
-    width: 30%;
     margin-top: 10px;
   }
 
@@ -75,6 +74,11 @@ label {
   .register {
    color: $link-color; 
   }
+
+  p {
+    margin: 10px;
+  }
+
 }
 
 .register-page {
@@ -109,7 +113,6 @@ label {
   margin-bottom: 5%;
   
   button {
-    width: 25%;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -119,6 +122,11 @@ label {
   color: $secondary-color;
   font-family: serif;
   font-weight: lighter;
+
+  thead {
+    text-align: center;
+    align-items: center;
+  }
 
   tr {
     justify-items: center;
@@ -275,6 +283,7 @@ label {
   button {
     margin: 5px;
     margin-bottom: 15px;
+    width: 80%;
   }
 
   p {
@@ -317,5 +326,8 @@ label {
     background-color: $primary-color;
   }
 
+}
 
+.dropdown {
+  float: right;
 }

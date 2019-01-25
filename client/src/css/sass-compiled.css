@@ -45,7 +45,6 @@ label {
   box-shadow: 2px 4px 6px 8px #C0C0C0;
 }
 .login-card button {
-  width: 30%;
   margin-top: 10px;
 }
 .login-card h1 {
@@ -56,6 +55,9 @@ label {
 }
 .login-card .register {
   color: #FF9700;
+}
+.login-card p {
+  margin: 10px;
 }
 
 .register-page {
@@ -87,7 +89,6 @@ label {
   margin-bottom: 5%;
 }
 .dashboard-page button {
-  width: 25%;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -96,6 +97,10 @@ label {
   color: #4cc3ff;
   font-family: serif;
   font-weight: lighter;
+}
+.dashboard-table thead {
+  text-align: center;
+  align-items: center;
 }
 .dashboard-table tr {
   justify-items: center;
@@ -237,6 +242,7 @@ label {
 .home-component button {
   margin: 5px;
   margin-bottom: 15px;
+  width: 80%;
 }
 .home-component p {
   font-size: 1.4rem;
@@ -268,6 +274,10 @@ label {
 .home-component .dashboard-page {
   min-height: 500px;
   background-color: rgba(5, 47, 69, 0.9);
+}
+
+.dropdown {
+  float: right;
 }
 
 /*# sourceMappingURL=sass-compiled.css.map */

@@ -29,15 +29,19 @@ class Dashboard extends Component {
 
   //used by center only to create a new delivery
   createDelivery = async (count) => {
-    this.props.toggleFetch();
+    await this.props.toggleFetch();
     //the center that is creating the delivery
     const deliveryInfo = {
       centerId: this.props.user.id,
       centerCount: count,
       contractId: this.generateRandId()
     }
-    setTimeout( () =>{this.props.createDelivery(deliveryInfo);
+    await this.props.createDelivery(deliveryInfo, this.props.user.id);
+    await setTimeout( async () =>{
+    await this.props.getDeliveries(this.props.paramStr);
+    await this.props.toggleFetch();
     }, 5000);
+
   }
 
   //used by plant accounts only to verify center deliveries
@@ -49,7 +53,7 @@ class Dashboard extends Component {
       contract_id : contract_id,
       plantCount: count
     }
-    await fetch(`/deliveries?unverified`, 
+    await fetch(`/deliveries?unverified=true`, 
     {
       headers: {
       "Authorization": `Bearer ${localStorage.getItem('token')}`,
@@ -61,14 +65,14 @@ class Dashboard extends Component {
        let selectedDelivery = await data.find(delivery => {
           return (delivery.contract_id === contract_id)
         });
+        console.log('selected delivery', selectedDelivery);
         deliveryVerification.discrepancy = await Math.abs(selectedDelivery.center_count-count);
-        console.log(deliveryVerification);
         await this.props.verifyDelivery(deliveryVerification);
-      })
-      .catch(error => {
-        console.log(error);
-      });  
-      await this.props.getDeliveries(this.props.paramStr);
+        await setTimeout( async () =>{
+          await this.props.getDeliveries(this.props.paramStr);
+          await this.props.toggleFetch();
+        },5000)
+        })
   }
 
   render() {

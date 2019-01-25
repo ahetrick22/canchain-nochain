@@ -15,9 +15,8 @@ const HomePage5 = ({increasePageNum, decreasePageNum}) => {
               <p> Discrepancies are easily identified, and there is a tamper-proof record of all counts, 
               plus a database to analyze data over time.
             </p>
-      
+            <button className = "btn btn-lg btn-primary" onClick={increasePageNum}>Sounds great!</button>
               <button className="btn btn-sm btn-secondary" onClick={decreasePageNum}>What was that about bag counts?</button>
-              <button className = "btn btn-lg btn-primary" onClick={increasePageNum}>Sounds great!</button>
 
          </div>
        </div>

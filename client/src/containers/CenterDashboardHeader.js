@@ -24,25 +24,24 @@ class CenterDashboardHeader extends Component {
     const { id } = this.props.user
     return (
       <>
-     <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-        Filter
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}`)} >All Deliveries</DropdownItem>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}?unverified=true`)}>Unverified Deliveries</DropdownItem>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}?verified=true`)}>Verified Deliveries</DropdownItem>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}?discrepancy=true`)}>Deliveries with Discrepancy</DropdownItem>
-        </DropdownMenu>
-      </ButtonDropdown>
-     
-     <button className="btn btn-primary pull-left" onClick={() => this.props.getDeliveries(this.props.paramStr)}>Get Latest Mined Transactions</button>
-    </>
-    )
-   
+    <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter
+  </button>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button className="dropdown-item btn-block" type="button" onClick={() => this.updateDeliveryParams(`/${id}`)} >All Deliveries</button>
+    <button className="dropdown-item btn-block" type="button"onClick={() => this.updateDeliveryParams(`/${id}?unverified=true`)}>Unverified Deliveries</button>
+    <button className="dropdown-item btn-block" type="button"onClick={() => this.updateDeliveryParams(`/${id}?verified=true`)}>Verified Deliveries</button>
+    <button className="dropdown-item btn-block" type="button"onClick={() => this.updateDeliveryParams(`/${id}?discrepancy=true`)}>Deliveries with Discrepancy</button>
 
+  </div>
+</div>
+        </>
+    )
   }
 }
+
+
 
 const mapStateToProps = state => {
   return {
