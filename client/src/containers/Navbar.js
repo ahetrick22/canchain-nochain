@@ -5,6 +5,24 @@ import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
 
+  state = {
+    isWide: true
+  }
+
+  componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate = () => {
+    this.setState({ isWide: window.innerWidth > 500 });
+  }
+
+
   logoutUser = async () => {
     await this.props.signout();
     await this.props.history.push('/');
@@ -16,12 +34,12 @@ class Navbar extends Component {
         <nav className="navbar navbar-light">
         <Link to="/" className="navbar-brand mr-auto logo">
         <img src ={window.location.origin + '/favicon.ico'} alt="logo"></img>CanChain</Link>
-            <ul className="navbar-brand mx-auto">
-            <li className="nav-item nav-welcome">Welcome, {this.props.user.username}.</li> 
-            </ul>
-                <ul className=" ml-auto">
+            {this.state.isWide ? <ul className="navbar-nav navbar-brand mx-auto">
+            <li className=" nav-item nav-welcome">Welcome, {this.props.user.username}.</li> 
+            </ul> : <></>}
+                <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
-                      <button className="btn btn-danger" type="submit" onClick={this.logoutUser}>Logout</button>               
+                      <button className="btn btn-danger" onClick={this.logoutUser}>Logout</button>               
                     </li>
                 </ul>
         </nav>

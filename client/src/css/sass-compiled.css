@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Fugaz+One");
 body {
   background-image: url(https://images.pexels.com/photos/3008/drinks-supermarket-cans-beverage.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  background-size: cover;
+  background-size: stretch;
   font-family: "Rokkitt", serif;
 }
 
@@ -113,7 +113,6 @@ label {
   background-color: #C0C0C0;
   font-size: 1.2rem;
   color: rgba(5, 47, 69, 0.9);
-  width: 125%;
 }
 
 .chain-record-modal-header {
@@ -125,7 +124,7 @@ label {
 }
 
 .chain-record-modal-footer button {
-  width: 200px;
+  width: 150px;
 }
 
 .dashboard-spinner {
@@ -178,14 +177,14 @@ label {
 
 .pull-right {
   float: right;
-  margin-bottom: 30px;
-}
-.pull-right button {
-  width: 100%;
+  margin-bottom: 10px;
+  margin-right: 10%;
 }
 
 .pull-left {
   float: left;
+  margin-bottom: 10px;
+  margin-left: 10%;
 }
 
 .arrow_box {
@@ -276,8 +275,13 @@ label {
   background-color: rgba(5, 47, 69, 0.9);
 }
 
-.dropdown {
+.create-delivery {
+  margin-top: 10px;
+}
+
+.center-filter {
   float: right;
+  margin-right: 10%;
 }
 
 /*# sourceMappingURL=sass-compiled.css.map */

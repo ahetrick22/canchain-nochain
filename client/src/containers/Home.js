@@ -5,6 +5,7 @@ import HomePage4 from '../components/HomePages/HomePage4';
 import HomePage5 from '../components/HomePages/HomePage5';
 import HomePage6 from '../components/HomePages/HomePage6';
 
+
  class Home extends Component {
 
   state = {

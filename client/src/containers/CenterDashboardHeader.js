@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class CenterDashboardHeader extends Component {
-    state = {
-      dropdownOpen: false
-    };
-
 
   updateDeliveryParams = async (paramStr) => {
     await this.props.setDeliveryParams(paramStr);
@@ -24,8 +19,8 @@ class CenterDashboardHeader extends Component {
     const { id } = this.props.user
     return (
       <>
-    <div className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div className="dropdown dropleft">
+  <button className="btn btn-secondary dropdown-toggle center-filter" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Filter
   </button>
   <div className="dropdown-menu" aria-labelledby="dropdownMenu2">

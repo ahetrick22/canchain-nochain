@@ -12,7 +12,7 @@ $link-color: #FF9700;
 
 body {
   background-image: url(https://images.pexels.com/photos/3008/drinks-supermarket-cans-beverage.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  background-size: cover;
+  background-size: stretch;
   font-family: $font-stack;
 }
 
@@ -33,7 +33,11 @@ nav {
   li {
     list-style-type: none;
   }
+
+
 }
+
+
 
 
 .main-class {
@@ -142,7 +146,6 @@ label {
   background-color: $gray;
   font-size: 1.2rem;
   color: $primary-color;
-  width: 125%;
 }
 
 .chain-record-modal-header {
@@ -162,7 +165,7 @@ label {
   @extend %chain-record-modal;
 
   button {
-    width: 200px;
+    width: 150px;
   }
 }
 
@@ -219,14 +222,14 @@ label {
 
 .pull-right {
   float: right;
-  margin-bottom: 30px;
-  button {
-    width: 100%;
-  }
+  margin-bottom: 10px;
+  margin-right: 10%;
 }
 
 .pull-left {
   float: left;
+  margin-bottom: 10px;
+  margin-left: 10%;
 }
 
 .arrow_box {
@@ -328,6 +331,11 @@ label {
 
 }
 
-.dropdown {
+.create-delivery {
+  margin-top: 10px;
+}
+
+.center-filter {
   float: right;
+  margin-right: 10%;
 }

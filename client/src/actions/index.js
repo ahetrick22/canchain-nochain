@@ -2,7 +2,6 @@ import { AUTH_USER, AUTH_ERROR, FETCHING_DATA, GET_DELIVERIES, SET_PARAMS } from
 
 //post a user's login information
 export const login = (data, callback) => dispatch => {
-  console.log('login data',data);
   fetch('/auth/signin', {
     method: 'POST', 
     headers: {"Content-Type": "application/json"}, 

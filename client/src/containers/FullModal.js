@@ -37,7 +37,7 @@ class FullModal extends React.Component {
     return (
       <div>
         
-        <div className={this.props.account_type=== "Center" ? "btn btn-primary" : "btn btn-success"} onClick={this.toggle}>{this.props.buttonLabel}</div>
+        <div className={this.props.account_type=== "Center" ? "btn btn-primary pull-left create-delivery" : "btn btn-success"} onClick={this.toggle}>{this.props.buttonLabel}</div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} >
           <ModalHeader className="chain-record-modal-header" toggle={this.toggle}>{this.props.account_type=== "Center" ? 'Create New Delivery' : `Verify Delivery # ${this.props.id}`}</ModalHeader>
           <ModalBody className="chain-record-modal-body">
@@ -46,8 +46,8 @@ class FullModal extends React.Component {
             onChange={e => this.onInputChange(e.target.value)} /> 
           </ModalBody>
           <ModalFooter className="chain-record-modal-footer">
+          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
             <Button color="primary" onClick={this.primaryButtonClick}>{this.props.account_type=== "Center" ? 'Submit This Delivery' : `Verify This Delivery`}</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>

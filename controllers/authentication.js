@@ -51,14 +51,16 @@ exports.signup = async (req, res, next) => {
 
   const { salt, hash } = await setPassword(password);
     // If a user with username does NOT exist, create and save user record
+    console.log(accountAddress)
     await pool.query(`INSERT INTO users(
       \`username\`, \`name\`, \`city\`,\`state\`,\`contact_full_name\`,\`account_address\`, \`account_type\`, \`salt\`, \`hash\`)
       VALUES
-      ('${username}', '${centerName}', '${city}', '${state}', '${contactName}', '${accountAddress}', '${accountType}', '${salt}', '${hash})`, async (err, user) => {
+      ('${username}', '${centerName}', '${city}', '${state}', '${contactName}', '${accountAddress}', '${accountType}', '${salt}', '${hash}')`, async (err, user) => {
         if (err) { return next(err) }
+        await pool.query(`SELECT * FROM users WHERE \`username\`='${username}'`, function(err, foundUser) {
+          if (err) { return next(err) }
+         res.json({ token: tokenForUser(foundUser) })
       })
-      await pool.query(`SELECT * FROM users WHERE \`username\`='${username}'`, function(err, existingUser) {
-        if (err) { return next(err) }
-       res.json({ token: tokenForUser(existingUser) })
-    })
+      })
+
   }

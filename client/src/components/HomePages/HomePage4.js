@@ -11,7 +11,7 @@ const HomePage4 = ({increasePageNum, decreasePageNum }) => {
             </p>
             <hr />
             <p>
-              <strong>Plants</strong> receive and count bags. They are incentivized to report low bag counts because they have to pay out less, but still profit from the scrap.
+              <strong>Plants</strong> receive and count bags from <strong>redemption centers</strong>. They are incentivized to report low bag counts because they have to pay out less, but still profit from the scrap.
               </p>        
               <button className = "btn btn-lg btn-primary" onClick={increasePageNum} >Ok, so what?</button>
               <button className="btn btn-sm btn-secondary" onClick={decreasePageNum} >Zoom back out</button>

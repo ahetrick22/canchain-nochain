@@ -47,7 +47,7 @@ class DashboardTable extends Component {
         <tr key ={delivery_id}>
           <td className = "align-middle">{!verified ? <NotVerified /> : discrepancy ? <VerifiedDiscrepancy /> : <VerifiedNoDiscrepancy /> }</td>
           <td className="align-middle">{delivery_id}</td>
-          <td className = "align-middle">{moment(date_time).format('MMM D YYYY, h:mm a')}</td>
+          <td className = "align-middle">{moment(date_time).format('M/D/YY, h:mm a')}</td>
           <td className = "align-middle count">{center_count}</td>
           <td className = "align-middle count">{verified ? plant_count : '-'}</td>
           <td className = "align-middle count">{verified ? discrepancy : '-'}</td>
@@ -61,7 +61,7 @@ class DashboardTable extends Component {
                                                       : discrepancy ? <VerifiedDiscrepancy /> : <VerifiedNoDiscrepancy /> }</td>
           <td className="align-middle">{delivery_id}</td>
           <td className = "align-middle">{name}</td>
-          <td className = "align-middle">{moment(date_time).format('MMM D YYYY, h:mm a')}</td>
+          <td className = "align-middle">{moment(date_time).format('M/D/YY, h:mm a')}</td>
           <td className = "align-middle count">{verified ? center_count : '-'}</td>
           <td className = "align-middle count">{verified ? plant_count : '-'}</td>
           <td className = "align-middle count">{verified ? discrepancy : '-'}</td>

@@ -63,7 +63,7 @@ class PlantDashboardHeader extends Component {
   render () {
     return (
       <>
-    <ButtonDropdown isOpen={this.state.centerDropdownOpen} toggle={this.centerToggle}>
+    <ButtonDropdown direction="right" className="pull-left" isOpen={this.state.centerDropdownOpen} toggle={this.centerToggle}>
         <DropdownToggle caret>
         Select a Center
         </DropdownToggle>
@@ -73,7 +73,7 @@ class PlantDashboardHeader extends Component {
         </DropdownMenu>
       </ButtonDropdown>
 
-        <ButtonDropdown isOpen={this.state.filterDropdownOpen} toggle={this.filterToggle}>
+        <ButtonDropdown direction="left" className="pull-right" isOpen={this.state.filterDropdownOpen} toggle={this.filterToggle}>
         <DropdownToggle caret>
         Filter
         </DropdownToggle>
