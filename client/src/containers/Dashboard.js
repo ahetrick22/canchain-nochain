@@ -10,17 +10,16 @@ import PlantDashboardHeader from './PlantDashboardHeader';
 //can either be a center dashboard or plant dashboard - there are few differences in conditionals
 class Dashboard extends Component {
   
-  componentDidMount = () => {
+  componentDidMount = async () => {
     //give the logged in user time to be assigned
     if (this.props.user) {
       if (this.props.user.account_type === "Center") {
         //if it's a center, get all the deliveries for it, or else get all the deliveries total
-        this.props.setDeliveryParams(`/${this.props.user.id}`)
+        await this.props.setDeliveryParams(`/${this.props.user.id}`)
       } else {
-        this.props.setDeliveryParams('')
+        await this.props.setDeliveryParams('')
       }
-      this.props.getDeliveries(this.props.paramStr);
-      //make sure the user's Metamask account is correct
+      await this.props.getDeliveries(this.props.paramStr);
     }
   }
 
@@ -91,12 +90,13 @@ class Dashboard extends Component {
                 <DashboardTable   /> 
                 </> 
                 
-                :
+                : account_type === "Plant" ?
                 <>
                 <PlantDashboardHeader />
                 <DashboardTable verifyDeliveryContract={this.verifyDeliveryContract}   />
                 </>
-                }
+                : <div></div>   
+              }
               </div>
             </div>
           </div>
