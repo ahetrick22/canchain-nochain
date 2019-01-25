@@ -51,7 +51,6 @@ exports.signup = async (req, res, next) => {
 
   const { salt, hash } = await setPassword(password);
     // If a user with username does NOT exist, create and save user record
-    console.log(accountAddress)
     await pool.query(`INSERT INTO users(
       \`username\`, \`name\`, \`city\`,\`state\`,\`contact_full_name\`,\`account_address\`, \`account_type\`, \`salt\`, \`hash\`)
       VALUES
