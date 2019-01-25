@@ -24,8 +24,7 @@ const localLogin = new LocalStrategy(localOptions, (username, password, done) =>
   // Verify this username and password, call done with the user
   // if it is the correct email and password
   // otherwise, call done with false
-  pool.getConnection(function(err, connection) {
-  connection.query(`SELECT * FROM users WHERE \`username\` = '${username}'`, (err, user) => {
+  pool.query(`SELECT * FROM users WHERE \`username\` = '${username}'`, (err, user) => {
     if (err) { return done(err); }
     if (Object.keys(user.length) === 0) { return done(null, false) }
 
@@ -35,9 +34,8 @@ const localLogin = new LocalStrategy(localOptions, (username, password, done) =>
 
     return done(null, user);
   })
-  connection.release();
 })
-})
+
 
 // Setup options for JWT Strategy
 const jwtOptions = {
@@ -51,8 +49,7 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
   // If it does, call 'done' with that other
   // otherwise, call done without a user object
 
-  pool.getConnection(function(err, connection) {
-    connection.query(`SELECT * FROM users WHERE id='${payload.sub}'`, (err, user) => {
+    pool.query(`SELECT * FROM users WHERE id='${payload.sub}'`, (err, user) => {
       if (err) { return done(err, false) }
       if (user) {
         done(null, user)
@@ -60,9 +57,8 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
         done(null, false)
       }
     })
-        connection.release();
     });
-});
+
 
 // Tell passport to use this strategy
 passport.use(jwtLogin)
