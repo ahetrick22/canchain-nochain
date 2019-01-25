@@ -49,21 +49,16 @@ exports.signup = async (req, res, next) => {
     }
   })
 
+  const { salt, hash } = await setPassword(password);
     // If a user with username does NOT exist, create and save user record
     await pool.query(`INSERT INTO users(
-      \`username\`, \`name\`, \`city\`,\`state\`,\`contact_full_name\`,\`account_address\`, \`account_type\`)
+      \`username\`, \`name\`, \`city\`,\`state\`,\`contact_full_name\`,\`account_address\`, \`account_type\`, \`salt\`, \`hash\`)
       VALUES
-      ('${username}', '${centerName}', '${city}', '${state}', '${contactName}', '${accountAddress}', '${accountType}')`, async (err, user) => {
+      ('${username}', '${centerName}', '${city}', '${state}', '${contactName}', '${accountAddress}', '${accountType}', '${salt}', '${hash})`, async (err, user) => {
         if (err) { return next(err) }
-        const { salt, hash } = await setPassword(password);
-        await pool.query(`UPDATE users SET \`salt\`='${salt}', \`hash\`='${hash}' WHERE \`username\`='${username}'`, async (err, result) => {
-          await pool.query(`SELECT * FROM users WHERE \`username\`='${username}'`, function(err, existingUser) {
-            if (err) { return next(err) }
-           res.json({ token: tokenForUser(existingUser) })
-        })
       })
+      await pool.query(`SELECT * FROM users WHERE \`username\`='${username}'`, function(err, existingUser) {
+        if (err) { return next(err) }
+       res.json({ token: tokenForUser(existingUser) })
     })
-
-    
-
   }

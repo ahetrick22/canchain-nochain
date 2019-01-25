@@ -13,14 +13,21 @@ const HomePage1 = ({increasePageNum}) => {
             </p>
             <p>
               Lack of Trust ------> Transparency ------> Security
-              </p>        
+              </p>   
+              </div>
+              <div className = "row">
+              <div className="col-4 ">
               <a href="https://github.com/ahetrick22/canchain-project"><button className="btn btn-sm btn-secondary">View the On-chain Source Code</button></a>
+              </div>
+              <div className="col-4"></div>
               <button className = "btn btn-lg btn-primary" onClick={increasePageNum}>Tell me More</button>
+              </div>
+              <div className="col-4">
               <Link to="/login" ><button className="btn btn-sm btn-secondary">View the Off-chain Demo</button></Link>
-         </div>
+              </div>
+       </div>
        </div>
       </div>
-   </div>   
   )
 }
 
