@@ -9,8 +9,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 router(app);
 
-app.enable('trust proxy');
 
+
+app.enable('trust proxy');
 
 app.use((req, res, next) => {
   res.append('Access-Control-Allow-Headers', ['email', 'Authorization', 'x-forwarded-proto', 'host']);
@@ -31,7 +32,6 @@ app.use(function(req, res, next){
   }
 })
 }
-
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

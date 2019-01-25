@@ -6,11 +6,11 @@ const crypto = require('crypto');
 const mysql = require('mysql');
 const keys = require('../config/keys');
 const pool  = mysql.createPool({
-  connectionLimit : 10,
-  host            : 'localhost',
-  user            : 'recycling',
-  password        : 'password',
-  database        : 'recycling-project-nochain'
+  connectionLimit : keys.SQLCONNLIMIT,
+  host            : keys.SQLHOST,
+  user            : keys.SQLUSERNAME,
+  password        : keys.SQLPASSWORD,
+  database        : keys.SQLSCHEMA
 });
 
 const validPassword = (password, salt, userHash) => {
@@ -18,9 +18,8 @@ const validPassword = (password, salt, userHash) => {
   return userHash == hash;
 }
 
-const localOptions = {};
 // Create local strategy
-const localLogin = new LocalStrategy(localOptions, (username, password, done) => {
+const localLogin = new LocalStrategy((username, password, done) => {
   // Verify this username and password, call done with the user
   // if it is the correct email and password
   // otherwise, call done with false
