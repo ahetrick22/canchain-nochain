@@ -56,10 +56,14 @@ exports.signup = async (req, res, next) => {
       VALUES
       ('${username}', '${centerName}', '${city}', '${state}', '${contactName}', '${accountAddress}', '${accountType}', '${salt}', '${hash}')`, async (err, user) => {
         if (err) { return next(err) }
+
         await pool.query(`SELECT * FROM users WHERE \`username\`='${username}'`, function(err, foundUser) {
           if (err) { return next(err) }
+          console.log(foundUser);
          res.json({ token: tokenForUser(foundUser) })
       })
+
       })
+
 
   }
