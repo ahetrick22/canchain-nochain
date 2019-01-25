@@ -1,5 +1,6 @@
 const mysql = require('mysql');
-const keys = require('../config/keys')
+const keys = require('../config/keys');
+const moment = require('moment');
 
 const pool  = mysql.createPool({
   connectionLimit : keys.SQLCONNLIMIT,
@@ -15,7 +16,7 @@ exports.addDelivery = (req, res, next) => {
   pool.query(`INSERT INTO deliveries(
     \`center_id\`, \`contract_id\`, \`center_count\`, \`date_time\`) 
     VALUES
-    ('${centerId}', '${contractId}', '${centerCount}', '${Date.now()}')`, (err, delivery) => {
+    ('${centerId}', '${contractId}', '${centerCount}', '${moment(Date.now()).format('YYYY-MM-DD')}')`, (err, delivery) => {
       if (err) { return next(err) }
       res.send({ contractId });
     })
