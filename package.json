@@ -9,6 +9,10 @@
     "dev": "concurrently --kill-others-on-fail \"nodemon server\" \"cd client && npm start\"",
     "mig": "truffle migrate"
   },
+  "engines": {
+    "node": "10.14.2",
+    "npm": "6.5.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
