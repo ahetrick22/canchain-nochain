@@ -29,6 +29,36 @@ class Login extends Component {
       });
   }
 
+      //log in a user (non-Metamask)
+      handleLoginDurhamClick = () =>  {
+        const data = { username: 'Durham-Center', password: 'password' }
+        //log them in, and then direct to correct dashboard
+        this.props.login(data
+          , () => {
+            this.props.history.push(`/dashboard`);
+        });
+    }
+
+        //log in a user (non-Metamask)
+        handleLoginChapelHillClick = () =>  {
+          const data = { username: 'Chapel-Hill-Center', password: 'password' }
+          //log them in, and then direct to correct dashboard
+          this.props.login(data
+            , () => {
+              this.props.history.push(`/dashboard`);
+          });
+      }
+
+          //log in a user (non-Metamask)
+    handleLoginRaleighClick = () =>  {
+      const data = { username: 'Raleigh-Plant', password: 'password' }
+      //log them in, and then direct to correct dashboard
+      this.props.login(data
+        , () => {
+          this.props.history.push(`/dashboard`);
+      });
+  }
+
     render() {
       if (this.props.user && Object.keys(this.props.user).length !== 0) {
         return <Redirect to="/dashboard" />
@@ -53,6 +83,9 @@ class Login extends Component {
       onChange={event => this.onPasswordInputChange(event.target.value)}></input>
             </div>
              <Button color="success" onClick={this.handleLoginClick}>Login</Button> 
+             <Button color="success" onClick={this.handleLoginDurhamClick}>Demo login: Durham Center</Button> 
+             <Button color="success" onClick={this.handleLoginChapelHillClick}>Demo login: Chapel Hill Center</Button> 
+             <Button color="success" onClick={this.handleLoginRaleighClick}>Demo login: Raleigh Plant</Button> 
              <br />
              <p className="new-user"><strong>New User? <Link to='/register' className="register"> Register now!</Link></strong></p>
             </div>
