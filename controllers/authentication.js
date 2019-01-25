@@ -4,11 +4,11 @@ const keys = require('../config/keys');
 var crypto = require('crypto');
 
 const pool  = mysql.createPool({
-  connectionLimit : 10,
-  host            : 'localhost',
-  user            : 'recycling',
-  password        : 'password',
-  database        : 'recycling-project-nochain'
+  connectionLimit : keys.SQLCONNLIMIT,
+  host            : keys.SQLHOST,
+  user            : keys.SQLUSERNAME,
+  password        : keys.SQLPASSWORD,
+  database        : keys.SQLSCHEMA
 });
 
 const tokenForUser = user => {

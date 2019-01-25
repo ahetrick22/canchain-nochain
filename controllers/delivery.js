@@ -1,20 +1,21 @@
 const mysql = require('mysql');
+const keys = require('../config/keys')
 
 const pool  = mysql.createPool({
-  connectionLimit : 10,
-  host            : 'localhost',
-  user            : 'recycling',
-  password        : 'password',
-  database        : 'recycling-project-nochain'
+  connectionLimit : keys.SQLCONNLIMIT,
+  host            : keys.SQLHOST,
+  user            : keys.SQLUSERNAME,
+  password        : keys.SQLPASSWORD,
+  database        : keys.SQLSCHEMA
 });
 
 //add a new delivery from a center
 exports.addDelivery = (req, res, next) => {
   const { centerId, contractId, centerCount } = req.body;
   pool.query(`INSERT INTO deliveries(
-    \`center_id\`, \`contract_id\`, \`center_count\`) 
+    \`center_id\`, \`contract_id\`, \`center_count\`, \`date_time\`) 
     VALUES
-    ('${centerId}', '${contractId}', '${centerCount}')`, (err, delivery) => {
+    ('${centerId}', '${contractId}', '${centerCount}', '${Date.now()}')`, (err, delivery) => {
       if (err) { return next(err) }
       res.send({ contractId });
     })
