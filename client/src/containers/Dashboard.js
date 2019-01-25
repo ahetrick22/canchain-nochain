@@ -65,7 +65,6 @@ class Dashboard extends Component {
        let selectedDelivery = await data.find(delivery => {
           return (delivery.contract_id === contract_id)
         });
-        console.log('selected delivery', selectedDelivery);
         deliveryVerification.discrepancy = await Math.abs(selectedDelivery.center_count-count);
         await this.props.verifyDelivery(deliveryVerification);
         await setTimeout( async () =>{
