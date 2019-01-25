@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import PlantVerifyModal from '../components/PlantVerifyModal';
 import CenterVerifyModal from '../components/CenterVerifyModal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 class ChainRecordModal extends Component {
   constructor(props) {

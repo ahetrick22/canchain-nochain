@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import DashboardTable from './DashboardTable';
 import FullModal from './FullModal';
 import { Redirect } from 'react-router-dom';
