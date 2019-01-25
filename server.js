@@ -5,11 +5,33 @@ const app = express();
 const router = require('./router');
 const cors = require('cors');
 
-app.use(cors());
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 router(app);
+
+app.enable('trust proxy');
+
+
+app.use((req, res, next) => {
+  res.append('Access-Control-Allow-Headers', ['email', 'Authorization', 'x-forwarded-proto', 'host']);
+  //res.append('Content-Type','application/json');
+  next();
+});
+
+app.use(cors());
+
+if (process.env.NODE_ENV === 'production') {
+app.use(function(req, res, next){
+  console.log('request', req);
+  if(req.header('x-forwarded-proto') !== 'https'){
+    console.log('redirecting', req);
+    res.redirect('https://whispering-anchorage-65843.herokuapp.com' + req.url);
+  }else{
+    next();
+  }
+})
+}
+
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
