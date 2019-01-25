@@ -47,7 +47,7 @@ class FullModal extends React.Component {
           </ModalBody>
           <ModalFooter className="chain-record-modal-footer">
           <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-            <Button color="primary" onClick={this.primaryButtonClick}>{this.props.account_type=== "Center" ? 'Submit This Delivery' : `Verify This Delivery`}</Button>{' '}
+            <Button color="primary" onClick={this.primaryButtonClick}>{this.props.account_type=== "Center" ? 'Submit' : `Verify`}</Button>{' '}
           </ModalFooter>
         </Modal>
       </div>

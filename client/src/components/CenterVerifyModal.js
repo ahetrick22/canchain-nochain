@@ -16,13 +16,13 @@ const CenterVerifyModal = props => {
             N/A
             <br/>
             <label>Center Date/Time: </label>
-            Shows the date/time of center's transaction.
+            The mined date/time of center's transaction
             <br/>
             <label>Plant Date/Time: </label>
             N/A
             <br/>
             <label>Center Block Number: </label>
-            Would be block number which mined the center's verification
+            Block number which mined the center's delivery
             <br/>
             <label>Plant Block Number: </label>
             N/A

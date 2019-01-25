@@ -28,7 +28,7 @@ nav li {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 label {
@@ -97,6 +97,8 @@ label {
   color: #4cc3ff;
   font-family: serif;
   font-weight: lighter;
+  width: 90%;
+  margin-left: 5%;
 }
 .dashboard-table thead {
   text-align: center;
@@ -274,7 +276,26 @@ label {
   min-height: 500px;
   background-color: rgba(5, 47, 69, 0.9);
 }
-
+.home-component .upsize {
+  font-size: 3rem;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.home-component .handshake {
+  float: right;
+}
+.home-component .lock {
+  float: left;
+}
+.home-component .handshake-text {
+  font-size: 2.5em;
+}
+.home-component .arrow {
+  margin-top: 15%;
+}
+.home-component .lock-text {
+  font-size: 2.5em;
+}
 .create-delivery {
   margin-top: 10px;
 }
@@ -282,6 +303,10 @@ label {
 .center-filter {
   float: right;
   margin-right: 10%;
+}
+
+.smaller-button-width button {
+  width: 50%;
 }
 
 /*# sourceMappingURL=sass-compiled.css.map */

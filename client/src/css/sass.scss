@@ -9,7 +9,6 @@ $tertiary-color: rgba(76,195,204,0.6);
 $gray: #C0C0C0;
 $link-color: #FF9700;
 
-
 body {
   background-image: url(https://images.pexels.com/photos/3008/drinks-supermarket-cans-beverage.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: stretch;
@@ -33,11 +32,7 @@ nav {
   li {
     list-style-type: none;
   }
-
-
 }
-
-
 
 
 .main-class {
@@ -45,7 +40,7 @@ nav {
 }
 
 h1 {
-  font-size: 3.0rem;
+  font-size: 2.5rem;
 }
 
 
@@ -69,7 +64,6 @@ label {
   h1 {
     font-family: $logo-font;
   }
-
 
   .new-user {
     font-size: 1.5rem;
@@ -126,6 +120,8 @@ label {
   color: $secondary-color;
   font-family: serif;
   font-weight: lighter;
+  width: 90%;
+  margin-left: 5%;
 
   thead {
     text-align: center;
@@ -329,6 +325,38 @@ label {
     background-color: $primary-color;
   }
 
+  .upsize {
+    font-size: 3.0rem;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  .handshake {
+    float:right;
+  }
+  
+  .lock {
+    float: left;
+  }
+  
+  .handshake-text {
+    font-size: 2.5em;
+  }
+
+  .handshake-icon {
+  }
+
+  .arrow {
+    margin-top: 15%;
+  }
+
+  .lock-text {
+    font-size: 2.5em;
+  }
+  
+  .lock-icon {
+  }
+
 }
 
 .create-delivery {
@@ -339,3 +367,10 @@ label {
   float: right;
   margin-right: 10%;
 }
+
+.smaller-button-width {
+  button {
+    width: 50%;
+  }
+}
+

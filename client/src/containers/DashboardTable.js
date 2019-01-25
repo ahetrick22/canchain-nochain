@@ -14,6 +14,7 @@ class DashboardTable extends Component {
     return (
       <>
       {this.props.isFetching ? <span className="dashboard-spinner">Recording your transaction on the chain... <FontAwesomeIcon icon={faSpinner} spin /></span> :
+      <div className="frame">
       <table className="table table-dark dashboard-table table-responsive-md">
         <thead>
           {tableHead(this.props.user.account_type)}
@@ -22,6 +23,7 @@ class DashboardTable extends Component {
         {fullTableBody(this.props.deliveries, this.props.user.account_type, this.props.verifyDeliveryContract)}
         </tbody>
       </table>
+      </div>
     }
     </>
         )
