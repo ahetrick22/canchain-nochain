@@ -26,7 +26,7 @@ const localLogin = new LocalStrategy(localOptions, (username, password, done) =>
   // otherwise, call done with false
   pool.query(`SELECT * FROM users WHERE \`username\` = '${username}'`, (err, user) => {
     if (err) { return done(err); }
-    if (user.length === 0) { return done(null, false) }
+    if (Object.keys(user.length) === 0) { return done(null, false) }
 
     if (!validPassword(password, user[0].salt, user[0].hash)) {
       return done(null, false, { message: 'Incorrect password.' })
