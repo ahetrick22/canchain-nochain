@@ -11,7 +11,7 @@ const HomePage6 = ({decreasePageNum}) => {
             </p>
            
               <a href="https://github.com/ahetrick22/canchain-project"><button className="btn btn-sm btn-secondary">View the On-chain Source Code</button></a>
-              <button className="btn btn-lg btn-primary">View the Off-chain Demo</button>
+              <Link to="/login" ><button className="btn btn-lg btn-primary">View the Off-chain Demo</button></Link>
               <button className = "btn btn-sm btn-secondary" onClick={decreasePageNum}>Go back</button>
 
          </div>

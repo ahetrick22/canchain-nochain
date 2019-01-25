@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage1 = ({increasePageNum}) => {
   return (
@@ -15,7 +16,7 @@ const HomePage1 = ({increasePageNum}) => {
               </p>        
               <a href="https://github.com/ahetrick22/canchain-project"><button className="btn btn-sm btn-secondary">View the On-chain Source Code</button></a>
               <button className = "btn btn-lg btn-primary" onClick={increasePageNum}>Tell me More</button>
-              <button className="btn btn-sm btn-secondary">View the Off-chain Demo</button>
+              <Link to="/login" ><button className="btn btn-sm btn-secondary">View the Off-chain Demo</button></Link>
          </div>
        </div>
       </div>
