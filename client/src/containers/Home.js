@@ -38,7 +38,7 @@ class Home extends Component {
   render () {
     switch (this.state.pageNum) {
       case 1:
-      return (<div className={this.state.isWide ? "home-component smaller-button-width" : "home-component"}><HomePage1 increasePageNum={this.increasePageNum} /></div>)
+      return (<div className={this.state.isWide ? "home-component smaller-button-width" : "home-component"}><HomePage1 isWide={this.state.isWide} increasePageNum={this.increasePageNum} /></div>)
       case 2: 
       return (<div className={this.state.isWide ? "home-component smaller-button-width" : "home-component"}><HomePage2 increasePageNum={this.increasePageNum} decreasePageNum={this.decreasePageNum}/></div>)
       case 3: 

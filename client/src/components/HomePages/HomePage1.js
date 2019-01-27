@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHandshake, faLock, faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
 
 //informational component which is shown when page first loads (buttons allow cycling through Home Pages 1-5)
-const HomePage1 = ({increasePageNum}) => {
+const HomePage1 = ({ increasePageNum, isWide }) => {
   return (
     <div className="container">
       <div className="main-class dashboard-page">
@@ -24,32 +24,18 @@ const HomePage1 = ({increasePageNum}) => {
             </p>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm">
-            <p className="handshake handshake-text">
-              <strong>Transparency</strong>
-            </p>
-          </div>
-          <div className="col-1 ">
-            <FontAwesomeIcon icon={faArrowCircleRight} className='upsize arrow'/>
-          </div>
-          <div className="col-sm ">
-            <p className="lock lock-text">
-              <strong>Security</strong>
-            </p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm">
-            <FontAwesomeIcon
-              icon={faHandshake}
-              className='upsize handshake handshake-icon'/>
-          </div>
-          <div className="col-sm">
-            <FontAwesomeIcon icon={faLock} className='upsize lock lock-icon'/>
-          </div>
-        </div>
 
+        <div className="row">
+        <div className="col">
+        <div className="front-graphic">
+            <strong className="front-text">Transparency</strong> <br /> <span className="icons">
+              <FontAwesomeIcon icon={faHandshake} className='faicon'/>
+            <FontAwesomeIcon icon={faArrowCircleRight} className='faicon'/>
+            <FontAwesomeIcon icon={faLock} className='faicon'/></span><br />
+              <strong className="front-text">Security</strong>
+        </div>
+        </div>
+        </div>
         <button className="btn btn-lg btn-primary" onClick={increasePageNum}>Tell me More</button>
         <a href="https://github.com/ahetrick22/canchain-project">
           <button className="btn btn-sm btn-secondary">View the On-chain Source Code</button>
