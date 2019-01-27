@@ -9,8 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 router(app);
 
-
-
+//next few sections are needed for the deployment to Heroku
 app.enable('trust proxy');
 
 app.use((req, res, next) => {

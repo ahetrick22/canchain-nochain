@@ -5,14 +5,15 @@ import HomePage3 from '../components/HomePages/HomePage3';
 import HomePage4 from '../components/HomePages/HomePage4';
 import HomePage5 from '../components/HomePages/HomePage5';
 
-
- class Home extends Component {
+//assigns the correct Home component to show (defaults to the first)
+class Home extends Component {
 
   state = {
     pageNum: 1,
     isWide: true
   }
 
+  //use these listeners to adjust some styling based on the width of the viewing device
   componentDidMount() {
     this.updatePredicate();
     window.addEventListener("resize", this.updatePredicate);

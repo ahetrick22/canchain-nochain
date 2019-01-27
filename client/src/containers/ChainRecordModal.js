@@ -3,6 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import PlantVerifyModal from '../components/PlantVerifyModal';
 import CenterVerifyModal from '../components/CenterVerifyModal';
 
+//creates the modal that shows a full chain record - most is hard coded/simulated for this version
 class ChainRecordModal extends Component {
   constructor(props) {
     super(props);

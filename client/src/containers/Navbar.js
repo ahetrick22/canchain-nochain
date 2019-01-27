@@ -9,6 +9,7 @@ class Navbar extends Component {
     isWide: true
   }
 
+  //use these listeners to adjust whether or not "Welcome,Username" shows based on the width of the viewing device
   componentDidMount() {
     this.updatePredicate();
     window.addEventListener("resize", this.updatePredicate);
@@ -25,7 +26,7 @@ class Navbar extends Component {
 
   logoutUser = async () => {
     await this.props.signout();
-    await this.props.history.push('/');
+    await this.props.history.push('/login');
   }
 
   render () {
@@ -56,7 +57,6 @@ class Navbar extends Component {
         </nav>
         )  
     }
-
   }
 }
 

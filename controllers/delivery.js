@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 const keys = require('../config/keys');
-const moment = require('moment');
 
 const pool  = mysql.createPool({
   connectionLimit : keys.SQLCONNLIMIT,
@@ -22,6 +21,7 @@ exports.addDelivery = (req, res, next) => {
     })
 }
 
+//plant verifies a delivery
 exports.verifyDelivery = (req, res, next) => {
   const { contract_id, discrepancy, plantCount } = req.body;
   pool.query(`UPDATE deliveries SET 
@@ -101,7 +101,7 @@ exports.getCenterDeliveries = (req, res) => {
   })
 }
   else {
-      //send all of them
+    //send all of them
     pool.query(`SELECT deliveries.id AS delivery_id, deliveries.center_id AS center_id, 
     verified, discrepancy, date_time, contract_id, plant_count, center_count, name, city, state, account_address, username, account_type
     FROM deliveries JOIN users ON deliveries.center_id = users.id WHERE center_id =${center} ORDER BY deliveries.date_time DESC`, (err, data) => {

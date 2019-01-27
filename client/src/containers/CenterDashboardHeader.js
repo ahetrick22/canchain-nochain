@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
+//shows the filters and options at the top of the dashboard
 class CenterDashboardHeader extends Component {
+  state = {
+    dropdownOpen: false
+  };
 
+  //when a filter is applied, it updates the parameter string for fetching deliveries and then gets them
   updateDeliveryParams = async (paramStr) => {
     await this.props.setDeliveryParams(paramStr);
     await this.props.getDeliveries(this.props.paramStr);
   }
 
+  //opens and closes the dropdown per bootstrap requirements
   toggle = () => {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -36,14 +42,11 @@ class CenterDashboardHeader extends Component {
   }
 }
 
-
-
 const mapStateToProps = state => {
   return {
     paramStr: state.deliveryReducer.paramStr,
     user: state.authReducer.user
   }
 }
-
 
 export default connect(mapStateToProps, actions)(CenterDashboardHeader);

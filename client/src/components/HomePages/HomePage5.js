@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HomePage6 = ({decreasePageNum}) => {
+//informational component which is shown when page first loads (buttons allow cycling through Home Pages 1-5)
+const HomePage5 = ({decreasePageNum}) => {
   return (
   <div className ="container">
       <div className="main-class dashboard-page">
@@ -22,5 +23,5 @@ const HomePage6 = ({decreasePageNum}) => {
   )
 }
 
-export default HomePage6;
+export default HomePage5;
     

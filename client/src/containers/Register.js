@@ -6,7 +6,6 @@ import { Button } from 'reactstrap';
 class Register extends Component {
 
   constructor(props) {
-
     super(props);
 
     this.state = {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+//chain record that shows up before a plant has verified a delivery
 const CenterVerifyModal = props => {
   return (
     <>

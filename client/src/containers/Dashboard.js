@@ -23,13 +23,13 @@ class Dashboard extends Component {
     }
   }
 
+  //fake a contract id since there's no chain here
   generateRandId = () => {
     return Math.floor(Math.random()*1000000);
   }
 
   //used by center only to create a new delivery
   createDelivery = async (count) => {
-    await this.props.toggleFetch();
     //the center that is creating the delivery
     const deliveryInfo = {
       centerId: this.props.user.id,
@@ -41,18 +41,17 @@ class Dashboard extends Component {
     await this.props.getDeliveries(this.props.paramStr);
     await this.props.toggleFetch();
     }, 5000);
-
   }
 
   //used by plant accounts only to verify center deliveries
   verifyDeliveryContract = async (contract_id, count) => {
-    await this.props.toggleFetch();
     //show them a modal to be able to put in the plant count & verify
     //send the verifyCount method & also update the DB
     const deliveryVerification = {
       contract_id : contract_id,
       plantCount: count
     }
+    //in this version, we need to manually calculate the discrepancy since the contract isn't there to do it
     await fetch(`/deliveries?unverified=true`, 
     {
       headers: {

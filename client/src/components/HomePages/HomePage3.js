@@ -1,6 +1,7 @@
 import React from 'react';
 
-const HomePage4 = ({increasePageNum, decreasePageNum }) => {
+//informational component which is shown when page first loads (buttons allow cycling through Home Pages 1-5)
+const HomePage3 = ({increasePageNum, decreasePageNum }) => {
   return (
   <div className ="container">
       <div className="main-class dashboard-page">
@@ -22,5 +23,5 @@ const HomePage4 = ({increasePageNum, decreasePageNum }) => {
   )
 }
 
-export default HomePage4;
+export default HomePage3;
     

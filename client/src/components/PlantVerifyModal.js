@@ -1,5 +1,6 @@
 import React from 'react';
 
+//chain record that shows up after a plant has verified a delivery
 const PlantVerifyModal = props => {
   const {
     dbDiscrepancy
@@ -9,7 +10,7 @@ const PlantVerifyModal = props => {
     <>
       {dbDiscrepancy === 0 ? <><div className="green-circle"></div><span>  No discrepancy in database.</span><br/></> : 
        <><div className="red-circle"></div><span>  Discrepancy identified in database.</span><br /></>}
-       <><div className="green-circle"></div><span>  Shows if the chain discrepancy matches the database discrepancy.</span><br/></> 
+       <><div className="green-circle"></div><span>  When on chain: shows if the database #s have been tampered with.</span><br/></> 
             
             <label>Center Address: </label>
             0x0000... contract address from Metamask
