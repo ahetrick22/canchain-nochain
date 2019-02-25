@@ -1,5 +1,4 @@
 require('dotenv').config();
-const 
 
 if (process.env.NODE_ENV === 'production') {
   // we are in production - return the prod set of keys
