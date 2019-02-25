@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const keys = require('../config/keys')
+const keys = require('../config/keys');
 
 const pool  = mysql.createPool({
   connectionLimit : keys.SQLCONNLIMIT,
@@ -15,12 +15,13 @@ exports.addDelivery = (req, res, next) => {
   pool.query(`INSERT INTO deliveries(
     \`center_id\`, \`contract_id\`, \`center_count\`, \`date_time\`) 
     VALUES
-    ('${centerId}', '${contractId}', '${centerCount}', '${Date.now()}')`, (err, delivery) => {
+    ('${centerId}', '${contractId}', '${centerCount}', NOW())`, (err, delivery) => {
       if (err) { return next(err) }
       res.send({ contractId });
     })
 }
 
+//plant verifies a delivery
 exports.verifyDelivery = (req, res, next) => {
   const { contract_id, discrepancy, plantCount } = req.body;
   pool.query(`UPDATE deliveries SET 
@@ -100,7 +101,7 @@ exports.getCenterDeliveries = (req, res) => {
   })
 }
   else {
-      //send all of them
+    //send all of them
     pool.query(`SELECT deliveries.id AS delivery_id, deliveries.center_id AS center_id, 
     verified, discrepancy, date_time, contract_id, plant_count, center_count, name, city, state, account_address, username, account_type
     FROM deliveries JOIN users ON deliveries.center_id = users.id WHERE center_id =${center} ORDER BY deliveries.date_time DESC`, (err, data) => {

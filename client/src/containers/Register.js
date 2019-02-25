@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import * as actions from '../actions';
 import { Button } from 'reactstrap';
 
 class Register extends Component {
 
   constructor(props) {
-
     super(props);
 
     this.state = {
@@ -86,9 +84,9 @@ class Register extends Component {
       <div className='main-class'>
       <div className ="container">
       <div className = "row">
-      <div className = "col-2">
+      <div className = "col-1">
       </div>
-      <div className="col-8 register-page">
+      <div className="col-10 register-page">
        <h1>Create New Account </h1>
        <div role="form">
        <div className="form-group">
@@ -146,7 +144,7 @@ class Register extends Component {
              <br />
              </div>
              </div>
-            <div className = "col-2">
+            <div className = "col-1">
             </div>
             </div>
             </div>

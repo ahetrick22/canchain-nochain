@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Rokkitt');
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One');
+
+@import "config-vars";
+@import "main";
+@import "navbar";
+@import "modal";
+@import "login";
+@import "register";
+@import "informational-section";
+@import "dashboard";
+
+
+
+
+.front-graphic {
+  font-size: 2.0rem;
+}
+
+.icons {
+  font-size: 2.5rem; 
+}
+
+.divider-icon {
+  font-size: 1.5rem;
+}
+
+.faicon {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.half-width {
+  width: 45%;
+  display:inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.smaller-button-width {
+  button {
+    width: 50%;
+  }
+}

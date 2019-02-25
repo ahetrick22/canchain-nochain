@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import PlantVerifyModal from '../components/PlantVerifyModal';
 import CenterVerifyModal from '../components/CenterVerifyModal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
+//creates the modal that shows a full chain record - most is hard coded/simulated for this version
 class ChainRecordModal extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,7 @@ class ChainRecordModal extends Component {
   render() {
         return (
           <>
-          <div className="verify-button" onClick={this.toggle}>Query the Chain</div>
+          <div className="btn btn-info" onClick={this.toggle}>Query Chain</div>
           <Modal className={this.props.className} isOpen={this.state.modal} toggle={this.toggle} >
         <ModalHeader className="chain-record-modal-header" toggle={this.toggle}>Chain Record for Contract ID #{this.props.contract_id}, Delivery ID #{this.props.deliveryId} {this.props.name ? <> from center: {this.props.name}</> : <></>}</ModalHeader>
             <ModalBody className="chain-record-modal-body">

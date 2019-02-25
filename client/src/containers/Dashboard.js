@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import DashboardTable from './DashboardTable';
 import FullModal from './FullModal';
 import { Redirect } from 'react-router-dom';
@@ -11,47 +10,49 @@ import PlantDashboardHeader from './PlantDashboardHeader';
 //can either be a center dashboard or plant dashboard - there are few differences in conditionals
 class Dashboard extends Component {
   
-  componentDidMount = () => {
+  componentDidMount = async () => {
     //give the logged in user time to be assigned
     if (this.props.user) {
       if (this.props.user.account_type === "Center") {
         //if it's a center, get all the deliveries for it, or else get all the deliveries total
-        this.props.setDeliveryParams(`/${this.props.user.id}`)
+        await this.props.setDeliveryParams(`/${this.props.user.id}`)
       } else {
-        this.props.setDeliveryParams('')
+        await this.props.setDeliveryParams('')
       }
-      this.props.getDeliveries(this.props.paramStr);
-      //make sure the user's Metamask account is correct
+      await this.props.getDeliveries(this.props.paramStr);
     }
   }
 
+  //fake a contract id since there's no chain here
   generateRandId = () => {
     return Math.floor(Math.random()*1000000);
   }
 
   //used by center only to create a new delivery
   createDelivery = async (count) => {
-    this.props.toggleFetch();
     //the center that is creating the delivery
     const deliveryInfo = {
       centerId: this.props.user.id,
       centerCount: count,
       contractId: this.generateRandId()
     }
-    setTimeout( () =>{this.props.createDelivery(deliveryInfo);
+    await this.props.createDelivery(deliveryInfo, this.props.user.id);
+    await setTimeout( async () =>{
+    await this.props.getDeliveries(this.props.paramStr);
+    await this.props.toggleFetch();
     }, 5000);
   }
 
   //used by plant accounts only to verify center deliveries
   verifyDeliveryContract = async (contract_id, count) => {
-    await this.props.toggleFetch();
     //show them a modal to be able to put in the plant count & verify
     //send the verifyCount method & also update the DB
     const deliveryVerification = {
       contract_id : contract_id,
       plantCount: count
     }
-    await fetch(`/deliveries?unverified`, 
+    //in this version, we need to manually calculate the discrepancy since the contract isn't there to do it
+    await fetch(`/deliveries?unverified=true`, 
     {
       headers: {
       "Authorization": `Bearer ${localStorage.getItem('token')}`,
@@ -64,13 +65,12 @@ class Dashboard extends Component {
           return (delivery.contract_id === contract_id)
         });
         deliveryVerification.discrepancy = await Math.abs(selectedDelivery.center_count-count);
-        console.log(deliveryVerification);
         await this.props.verifyDelivery(deliveryVerification);
-      })
-      .catch(error => {
-        console.log(error);
-      });  
-      await this.props.getDeliveries(this.props.paramStr);
+        await setTimeout( async () =>{
+          await this.props.getDeliveries(this.props.paramStr);
+          await this.props.toggleFetch();
+        },5000)
+        })
   }
 
   render() {
@@ -92,12 +92,13 @@ class Dashboard extends Component {
                 <DashboardTable   /> 
                 </> 
                 
-                :
+                : account_type === "Plant" ?
                 <>
                 <PlantDashboardHeader />
                 <DashboardTable verifyDeliveryContract={this.verifyDeliveryContract}   />
                 </>
-                }
+                : <div></div>   
+              }
               </div>
             </div>
           </div>

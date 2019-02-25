@@ -15,9 +15,7 @@ const store = configureStore({
     reducer: createRootReducer(history)
 })
 
-// pass in the drizzle instance and its options around the standard provider
 ReactDOM.render((
-
     <Provider store={store}>
         <ConnectedRouter history={history} >
             <App history={history}/>            

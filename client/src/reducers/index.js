@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux'
-import { connectRouter } from 'connected-react-router'
-import authReducer from './reducer-auth'
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import authReducer from './reducer-auth';
 import deliveryReducer from './reducer-delivery';
 import fetchingReducer from './reducer-fetching';
-
 
 export default (history) => combineReducers({
   router: connectRouter(history),

@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+//shows the filters and options at the top of the dashboard
 class CenterDashboardHeader extends Component {
-    state = {
-      dropdownOpen: false
-    };
+  state = {
+    dropdownOpen: false
+  };
 
-
+  //when a filter is applied, it updates the parameter string for fetching deliveries and then gets them
   updateDeliveryParams = async (paramStr) => {
     await this.props.setDeliveryParams(paramStr);
     await this.props.getDeliveries(this.props.paramStr);
   }
 
+  //opens and closes the dropdown per bootstrap requirements
   toggle = () => {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -24,23 +25,20 @@ class CenterDashboardHeader extends Component {
     const { id } = this.props.user
     return (
       <>
-     <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-        Filter
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}`)} >All Deliveries</DropdownItem>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}?unverified=true`)}>Unverified Deliveries</DropdownItem>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}?verified=true`)}>Verified Deliveries</DropdownItem>
-          <DropdownItem onClick={() => this.updateDeliveryParams(`/${id}?discrepancy=true`)}>Deliveries with Discrepancy</DropdownItem>
-        </DropdownMenu>
-      </ButtonDropdown>
-     
-     <button className="btn btn-primary pull-left" onClick={() => this.props.getDeliveries(this.props.paramStr)}>Get Latest Mined Transactions</button>
-    </>
-    )
-   
+    <div className="dropdown dropleft">
+  <button className="btn btn-secondary dropdown-toggle center-filter" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter
+  </button>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button className="dropdown-item btn-block" type="button" onClick={() => this.updateDeliveryParams(`/${id}`)} >All Deliveries</button>
+    <button className="dropdown-item btn-block" type="button"onClick={() => this.updateDeliveryParams(`/${id}?unverified=true`)}>Unverified Deliveries</button>
+    <button className="dropdown-item btn-block" type="button"onClick={() => this.updateDeliveryParams(`/${id}?verified=true`)}>Verified Deliveries</button>
+    <button className="dropdown-item btn-block" type="button"onClick={() => this.updateDeliveryParams(`/${id}?discrepancy=true`)}>Deliveries with Discrepancy</button>
 
+  </div>
+</div>
+        </>
+    )
   }
 }
 
@@ -50,6 +48,5 @@ const mapStateToProps = state => {
     user: state.authReducer.user
   }
 }
-
 
 export default connect(mapStateToProps, actions)(CenterDashboardHeader);
