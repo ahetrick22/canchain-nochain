@@ -17,8 +17,8 @@ if (process.env.NODE_ENV === 'production') {
     SQLCONNLIMIT: 10,
     SQLHOST: '127.0.0.1',
     SQLUSERNAME: 'root',
-    SQLPASSWORD: '',
-    SQLSCHEMA: require('schema.sql')
+    SQLPASSWORD: 'password',
+    SQLSCHEMA: 'recycling-project-nochain'
   }
 } else {
   // we are in development - return the dev keys
