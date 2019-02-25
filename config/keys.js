@@ -1,4 +1,5 @@
 require('dotenv').config();
+const 
 
 if (process.env.NODE_ENV === 'production') {
   // we are in production - return the prod set of keys
@@ -9,6 +10,16 @@ if (process.env.NODE_ENV === 'production') {
     SQLUSERNAME: 'bd526fad29745d',
     SQLPASSWORD: '2a827dc6',
     SQLSCHEMA: 'heroku_19125842a34b8b3'
+  }
+} else if (process.env.NODE_ENV == 'ci') {
+  //we are in Travis CI - return those keys
+  module.exports = {
+    TOKEN_SECRET: 'eqwerepouin325y4',
+    SQLCONNLIMIT: 10,
+    SQLHOST: '127.0.0.1',
+    SQLUSERNAME: 'root',
+    SQLPASSWORD: '',
+    SQLSCHEMA: require('schema.sql')
   }
 } else {
   // we are in development - return the dev keys

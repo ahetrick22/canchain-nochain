@@ -12,7 +12,7 @@ module.exports = app => {
   app.post('/auth/signup', Authentication.signup)
   app.get('/deliveries/:center',  requireAuth, Delivery.getCenterDeliveries)
   app.get('/deliveries', requireAuth, Delivery.getDeliveries)
-  app.post('/delivery', requireAuth, Delivery.addDelivery)
+  app.post('/delivery', Delivery.addDelivery)
   app.put('/verifydelivery', requireAuth, Delivery.verifyDelivery)
   app.get('/centers', requireAuth, Center.getCenters)
 }
