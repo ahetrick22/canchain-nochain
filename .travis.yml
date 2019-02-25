@@ -5,7 +5,7 @@ dist: trusty
 services:
   - mysql
 before_install:
-  - mysql -u root --password=""
+  - mysql -u root --password="" < schema.sql
 env: 
   - NODE_ENV=ci
 cache:
